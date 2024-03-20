@@ -6,6 +6,7 @@ import { Vitsippa } from './Vitsippa.jsx';
 import { useEffect, useRef, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { easing } from 'maath';
+import PortalOverlay from './PortalOverlay';
 
 
 export const Experience = () => {
@@ -93,9 +94,16 @@ export const Experience = () => {
                 <Vitsippa scale={2.5} position={[-1.3, -1, 0 ]}/> 
             </FlowerStage>
 
-            {/* <CameraControls ref={camControlRef} maxPolarAngle={Math.PI/2} minPolarAngle={Math.PI/8} minAzimuthAngle={-Math.PI/4} maxAzimuthAngle ={Math.PI/4}/>  */}
-            <CameraControls ref={camControlRef}/> 
-        </>
+            <CameraControls ref={camControlRef} maxPolarAngle={Math.PI/2} minPolarAngle={Math.PI/8} minAzimuthAngle={-Math.PI/4} maxAzimuthAngle ={Math.PI/4}/> 
+
+            {/* Text for portals  */}
+            <PortalOverlay
+                active={active}
+                poem={active === "Crocus" ? "Crocus sativus hej hej hej" : active === "Tussilago" ? "Tussilago farfara hej hej hej" : active === "Wood Anemone" ? "Anemonoides nemorosa hej hej hej" : ""}
+                placement={active === "Crocus" ? { top: '10%', left: '10%' } : active === "Tussilago" ? { top: '20%', left: '50%' } : active === "Wood Anemone" ? { top: '30%', left: '30%' } : { top: '10%', left: '0%' }}
+                textStyle={active === "Crocus" ? { color: 'red', fontSize: '24px', fontFamily: 'Arial', fontWeight: 'bold' } : active === "Tussilago" ? { color: 'blue', fontSize: '20px', fontFamily: 'Helvetica', fontWeight: 'normal' } : active === "Wood Anemone" ? { color: 'green', fontSize: '18px', fontFamily: 'Times New Roman', fontWeight: 'normal' } : { color: 'black', fontSize: '16px', fontFamily: 'Arial', fontWeight: 'normal' }}
+            />        
+</>
     )
 }
 
@@ -114,16 +122,16 @@ const FlowerStage = ({children, texture, name, color, paragraph, active, setActi
 
     const handlePointerEnter = () => {
         if (!active) {
-        hoverSound.currentTime = 0; // Reset sound to start
-        hoverSound.play(); // Start playing the sound
-        setHovered(true);
+        hoverSound.currentTime = 0
+        hoverSound.play();
+        setHovered(true)
         }
     };
 
     const handlePointerLeave = () => {
-        hoverSound.pause(); // Pause the sound
-        hoverSound.currentTime = 0; // Reset sound to start
-        setHovered(false);
+        hoverSound.pause()
+        hoverSound.currentTime = 0
+        setHovered(false)
     };
 
 
@@ -136,23 +144,16 @@ const FlowerStage = ({children, texture, name, color, paragraph, active, setActi
             {paragraph}
             <meshBasicMaterial color={color} toneMapped={false}/> 
             </Text>
-            {/* {active && poem && (
-            <group>
-                <Text font="./font/InstrumentSerif-Regular.ttf" fontSize={1} position={[0, 0, -1]} anchorX={"center"} anchorY={"middle"}>
-                    {poem}
-                </Text>
-                <meshBasicMaterial color={"black"} toneMapped={false} />
-            </group>
-)} */}
+
                 <RoundedBox 
                 name={name}
                 args={[ 2, 3, 0.05 ]}
                 onDoubleClick={() => {
-                    setActive(active === name ? null : name);
+                    setActive(active === name ? null : name)
                     clickSound.play() 
                     setTimeout(() => {
-                        clickSound.currentTime = 0; 
-                        clickSound.pause(); 
+                        clickSound.currentTime = 0
+                        clickSound.pause()
                     }, 1000);
                 }}
                 onPointerEnter={handlePointerEnter}
@@ -174,7 +175,4 @@ const FlowerStage = ({children, texture, name, color, paragraph, active, setActi
 
 }
 
-
-
-// npx gltfjsx public/models/crocus.glb -o "src/components/Crocus.jsx" -r "public"
 

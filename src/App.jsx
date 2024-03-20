@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 import { Experience } from "./components/Experience.jsx";
 import { LoadingScreen } from "./components/LoadingScreen.jsx";
+// import Poems from "./components/Poems.jsx"; 
 
 function App() {
   const [start, setStart] = useState(false)
@@ -11,12 +12,12 @@ function App() {
   useEffect(() => {
     const handleEnded = () => {
       // Restart the audio playback when it ends
-      ambience.play();
+      ambience.play()
     };
   
     if (start) {
       // Start playing the audio
-      ambience.play();
+      ambience.play()
   
       // Add an event listener for the "ended" event
       ambience.addEventListener('ended', handleEnded);
@@ -26,7 +27,7 @@ function App() {
     return () => {
       ambience.removeEventListener('ended', handleEnded);
     };
-  }, [start]);
+  }, [start])
 
   return (
     <>
@@ -36,6 +37,7 @@ function App() {
             {start && <Experience />}
           </Suspense>
         </Canvas>
+        
       </div>
       <LoadingScreen started={start} onStarted={() => setStart(true)} />
     </>
