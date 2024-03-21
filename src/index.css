@@ -4,6 +4,7 @@
   height: 100vh;
 }
 
+
 .canvas-container {
   position: absolute;
   top: 0;
@@ -64,20 +65,21 @@ body {
 
 .loadingScreen__title {
   font-size: 8rem;
-  color: #C072AD;
+  color: #afacaa;
   margin: 0;
   margin-bottom: 48px;
   font-family: "InstrumentSerif-Regular", serif;
-  letter-spacing: 5px; 
+  letter-spacing: 5px;
+  font-weight: 400; 
 
 }
 
 .loadingScreen__button {
-  padding: 16px 32px;
-  background-color: #C072AD;
+  padding: 16px 48px;
+  background-color: #e48ccc;
   color: white;
   border: 1px;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1.5rem;
   border-radius: 60px;
   transition: background-color 0.4s;
@@ -122,43 +124,6 @@ body {
   opacity: 0;
 }
 
-/* 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-
-.overlay-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  text-align: center;
-  color: white; 
-  font-size: 24px; 
-}
-
-
-.portal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.portal-html {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-} */
-
 .portal-overlay {
   position: fixed;
   top: 0;
@@ -172,14 +137,169 @@ body {
   z-index: 1000;
 }
 
-.poem {
-  font-size: 24px;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
 
 .portal-overlay.active {
   opacity: 1; /* Show the overlay when active */
+}
+
+.portal-text {
+  background-color: rgba(255, 255, 255, 0.30);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  backdrop-filter: blur(50%);
+  border-radius: 16px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  backdrop-filter: 10px;
+  gap: 2rem; 
+  width: 20vw;
+  position: absolute;
+  left: 50px;
+  top: 64px; 
+  padding-top: 32px;
+  padding-bottom: 32px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+h1 {
+  line-height: 100%;
+  font-size: 3rem;
+  font-weight: 400;
+  margin-block-end: 0px;
+  margin-block-start: 0px;
+}
+
+p {
+  font-size: 1.5rem;
+  opacity: 100%;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  line-height: 1.3;
+
+}
+
+.box-style {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  position: relative;
+  width: 100%;
+  height: 100svh;
+}
+
+
+
+/* media query */
+@media screen and (max-width: 991px) {
+    h1 {
+      line-height: 100%;
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin-block-end: 0px;
+      margin-block-start: 0px;
+    }
+
+    p {
+      font-size: 1.3rem;
+      opacity: 100%;
+      margin-block-end: 0;
+      margin-block-start: 0;
+      line-height: 1.3;
+    }
+
+    .portal-text {
+      background-color: rgba(255, 255, 255, 0.30);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(50%);
+      border-radius: 16px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start; 
+      backdrop-filter: 10px;
+      gap: 2rem; 
+      width: 30vw;
+      position: absolute;
+      left: 50px;
+      top: 64px; 
+      padding-top: 32px;
+      padding-bottom: 32px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    
+    
+}
+@media screen and (max-width: 767px) {
+  h1 {
+    line-height: 100%;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    opacity: 100%;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    line-height: 1.3;
+  
+  }
+  .box-style {
+    padding: 10vw;
+    width: 100vw;
+    position: 'relative';
+    bottom: 0px;
+  }
+
+}
+@media screen and (max-width: 479px) {
+
+  h1 {
+    line-height: 100%;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    opacity: 100%;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    line-height: 1.3;
+  
+  }
+  .portal-text {
+    background-color: rgba(255, 255, 255, 0.30);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(50%);
+    border-radius: 16px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    backdrop-filter: 10px;
+    gap: 2rem; 
+    width: 50vw;
+    position: absolute;
+    left: 16px;
+    top: 16px; 
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 24px;
+    padding-right: 24px;
+ 
+  }
+
+.box-style {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  position: relative;
+  width: 100%;
+  height: 100svh;
+}
 }

@@ -16,6 +16,7 @@ export const Experience = () => {
     const [hovered, setHovered] = useState(null)
     const camControlRef = useRef()
     const scene = useThree((state) => state.scene)
+    const InstrumentSerifRegular = './font/InstrumentSerif-Regular.ttf' 
 
     useEffect(() => {
         if (active) {
@@ -50,7 +51,7 @@ export const Experience = () => {
 
             <FlowerStage 
                 name={"Crocus"}
-                paragraph={"Crocus sativus"}
+                paragraph={"Crocus Sativus"}
                 poem={"Crocus sativus hej hej hej "}
                 color={"white"} 
                 texture={'textures/sphere_crocus.jpg'} 
@@ -65,7 +66,7 @@ export const Experience = () => {
 
             <FlowerStage 
                 name={"Tussilago"}
-                paragraph={"Tussilago farfara"}
+                paragraph={"Tussilago Farfara"}
                 poem={"Crocus sativus hej hej hej "}
                 color={"#58421a"} 
                 texture={'textures/sphere_tussilago.jpg'} 
@@ -80,7 +81,7 @@ export const Experience = () => {
 
             <FlowerStage 
                 name={"Wood Anemone"}
-                paragraph={"Anemonoides nemorosa"}
+                paragraph={"Anemonoides Nemorosa"}
                 poem={"Crocus sativus hej hej hej "}
                 color={"#587762"} 
                 texture={'textures/sphere_vitsippa.jpg'} 
@@ -94,14 +95,27 @@ export const Experience = () => {
                 <Vitsippa scale={2.5} position={[-1.3, -1, 0 ]}/> 
             </FlowerStage>
 
-            <CameraControls ref={camControlRef} maxPolarAngle={Math.PI/2} minPolarAngle={Math.PI/8} minAzimuthAngle={-Math.PI/4} maxAzimuthAngle ={Math.PI/4}/> 
+            <CameraControls ref={camControlRef} maxPolarAngle={Math.PI/2} minPolarAngle={Math.PI/8} minAzimuthAngle={-Math.PI/4} maxAzimuthAngle ={Math.PI/4} minZoom={5} maxZoom={5}/> 
 
             {/* Text for portals  */}
             <PortalOverlay
                 active={active}
-                poem={active === "Crocus" ? "Crocus sativus hej hej hej" : active === "Tussilago" ? "Tussilago farfara hej hej hej" : active === "Wood Anemone" ? "Anemonoides nemorosa hej hej hej" : ""}
-                placement={active === "Crocus" ? { top: '10%', left: '10%' } : active === "Tussilago" ? { top: '20%', left: '50%' } : active === "Wood Anemone" ? { top: '30%', left: '30%' } : { top: '10%', left: '0%' }}
-                textStyle={active === "Crocus" ? { color: 'red', fontSize: '24px', fontFamily: 'Arial', fontWeight: 'bold' } : active === "Tussilago" ? { color: 'blue', fontSize: '20px', fontFamily: 'Helvetica', fontWeight: 'normal' } : active === "Wood Anemone" ? { color: 'green', fontSize: '18px', fontFamily: 'Times New Roman', fontWeight: 'normal' } : { color: 'black', fontSize: '16px', fontFamily: 'Arial', fontWeight: 'normal' }}
+                poem={
+                    active === "Crocus" ? "Purple crocus smiles\nIts greeting gives me hope\nSpring will soon be here\n- Carol Shelton" : 
+                    active === "Tussilago" ? "The light of a candle\nIs transferred to another candle\n Spring twilight\n\n - Yosa Buson" : 
+                    active === "Wood Anemone" ? "Purple crocus smiles\nIts greeting gives me hope\nSpring will soon be here\n- Carol Shelton" : ""}
+                placement={
+                    active === "Crocus" ? { bottom: '0%', left: '0%' } :
+                    active === "Tussilago" ? { top: '0%', left: '0%' } : 
+                    active === "Wood Anemone" ? { top: '0%', left: '0%' } : { top: '10%', left: '0%' }}
+                textStyle={
+                    active === "Crocus" ? { color: '#8585bd'} : 
+                    active === "Tussilago" ? { color: '#927348' } : 
+                    active === "Wood Anemone" ? { color: '#627765' } : { color: 'black', fontSize: '16px', fontFamily: 'Arial', fontWeight: 'normal' }}
+                paragraph={
+                    active === "Crocus" ? "Crocus Sativus" : 
+                    active === "Tussilago" ? "Tussilago Farfara" : 
+                    active === "Wood Anemone" ? "Anemonoides Nemorosa" : ""}
             />        
 </>
     )
