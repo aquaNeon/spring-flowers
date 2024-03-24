@@ -2,18 +2,16 @@ import { useGLTF, useTexture } from '@react-three/drei'
 
 export function Crocus(props) {
   const { nodes, materials } = useGLTF('/models/crocus.glb')
-
   const texture = useTexture('/textures/crocus.jpg')
 
-
-// Flip the texture vertically
-texture.flipY = false; 
+  // Flip the texture vertically
+  texture.flipY = false; 
 
   // Assign the texture to the material
   materials.crocus_petals.map = texture
   materials.crocus_pistill.map = texture
   materials.crocius_stem_transition.map = texture
-  materials['crocus_stem.001'].map = texture; 
+  materials['crocus_stem.001'].map = texture
 
 
   return (

@@ -1,4 +1,4 @@
-import { useGLTF, useTexture } from '@react-three/drei'
+import { useGLTF, useTexture } from '@react-three/drei';
 
 export function Vitsippa(props) {
   const { nodes, materials } = useGLTF('/models/vitsippa.glb')

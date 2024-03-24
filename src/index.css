@@ -4,6 +4,9 @@
   height: 100vh;
 }
 
+html, body {
+  line-break: normal;
+}
 
 .canvas-container {
   position: absolute;
@@ -14,22 +17,20 @@
 }
 
 .background-default {
-  background-color: #f6f6ff;
+  background-color: #fffcf6;
 }
 
 .background-image {
-  background-image: url('./public/textures/Start_image.jpg');
+  background-image: url('/public/textures/Start_image.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 } 
 
-
 body {
   margin: 0;
   /* background-color: #f6f6ff; */
 }
-
 
 @font-face {
   font-family: 'InstrumentSerif-Italic';
@@ -40,7 +41,6 @@ body {
   font-family: 'InstrumentSerif-Regular';
   src: url('/public/font/InstrumentSerif-Regular.ttf') format('truetype');
 }
-
 
 .loadingScreen {
   position: fixed;
@@ -67,11 +67,22 @@ body {
   font-size: 8rem;
   color: #afacaa;
   margin: 0;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   font-family: "InstrumentSerif-Regular", serif;
   letter-spacing: 5px;
   font-weight: 400; 
+}
 
+.loadingScreen__paragraph {
+  font-size: 2rem;
+  color: #afacaa;
+  font-family: "InstrumentSerif-Italic", serif;
+  letter-spacing: 5px;
+  font-weight: 400; 
+  opacity: 100%;
+  margin-block-end: 10%;
+  margin-block-start: 0;
+  line-height: 30%;
 }
 
 .loadingScreen__button {
@@ -85,7 +96,6 @@ body {
   transition: background-color 0.4s;
   font-family: "InstrumentSerif-Regular", serif;
   letter-spacing: 3px; 
-
 }
 
 .loadingScreen__button:hover {
@@ -111,7 +121,7 @@ body {
   left: 0;
   top: 0;
   bottom: 0;
-  background-color: #c4cdc4;
+  background-color: #f0dced;
   transition: width 0.4s;
 }
 
@@ -137,9 +147,16 @@ body {
   z-index: 1000;
 }
 
-
 .portal-overlay.active {
   opacity: 1; /* Show the overlay when active */
+}
+
+.portal-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2cqw; 
 }
 
 .portal-text {
@@ -147,50 +164,59 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.20);
   backdrop-filter: blur(50%);
   border-radius: 16px;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  align-items: flex-start; 
+  justify-content: center;
+  align-items: center;
   backdrop-filter: 10px;
-  gap: 2rem; 
+  position: relative;
   width: 20vw;
-  position: absolute;
-  left: 50px;
-  top: 64px; 
-  padding-top: 32px;
-  padding-bottom: 32px;
-  padding-left: 24px;
-  padding-right: 24px;
+  left: 4cqw;
+  top: 4cqw; 
+  padding-top: 2cqw;
+  padding-bottom: 2cqw;
+  padding-left: 2cqw;
+  padding-right: 2cqw;
+
 }
 
 h1 {
   line-height: 100%;
-  font-size: 3rem;
+  font-size: 2.5cqw;
   font-weight: 400;
   margin-block-end: 0px;
   margin-block-start: 0px;
+  display: block;
 }
 
-p {
-  font-size: 1.5rem;
+.poem-text {
+  font-size: 1.5cqw;
   opacity: 100%;
   margin-block-end: 0;
   margin-block-start: 0;
   line-height: 1.3;
-
+  font-family: "InstrumentSerif-Italic", serif;
+  display: block;
 }
 
-.box-style {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start; 
-  position: relative;
-  width: 100%;
-  height: 100svh;
+.mobile {
+  font-size: 0cqw;
+  opacity: 100%;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  line-height: 100%;
+  font-family: "InstrumentSerif-Italic", serif;
+  display: block;
+  color: #afacaa;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 
+/* ------------------------------------------------- */
 
-/* media query */
 @media screen and (max-width: 991px) {
     h1 {
       line-height: 100%;
@@ -200,106 +226,263 @@ p {
       margin-block-start: 0px;
     }
 
-    p {
-      font-size: 1.3rem;
+    .loadingScreen__paragraph {
+      line-height: 30%;
+      line-height: 50%;
+      font-size: 2rem;
       opacity: 100%;
-      margin-block-end: 0;
+      margin-block-end: 10%;
       margin-block-start: 0;
-      line-height: 1.3;
+      font-family: "InstrumentSerif-Italic", serif;
     }
 
+    .portal-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 2cqw; 
+    }
+    
     .portal-text {
       background-color: rgba(255, 255, 255, 0.30);
       border: 1px solid rgba(255, 255, 255, 0.20);
       backdrop-filter: blur(50%);
       border-radius: 16px;
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
-      align-items: flex-start; 
+      justify-content: center;
+      align-items: center;
       backdrop-filter: 10px;
-      gap: 2rem; 
-      width: 30vw;
-      position: absolute;
-      left: 50px;
-      top: 64px; 
-      padding-top: 32px;
-      padding-bottom: 32px;
-      padding-left: 24px;
-      padding-right: 24px;
+      position: relative;
+      width: 25vw;
+      left: 4cqw;
+      top: 4cqw; 
+      padding-top: 2cqw;
+      padding-bottom: 2cqw;
+      padding-left: 2cqw;
+      padding-right: 2cqw;
+    
     }
+    
+    h1 {
+      line-height: 100%;
+      font-size: 3cqw;
+      font-weight: 400;
+      margin-block-end: 0px;
+      margin-block-start: 0px;
+      display: block;
+    }
+    
+    .poem-text {
+      font-size: 1.8cqw;
+      opacity: 100%;
+      margin-block-end: 0;
+      margin-block-start: 0;
+      line-height: 1.3;
+      font-family: "InstrumentSerif-Italic", serif;
+      display: block;
+    }
+    
+
     
     
 }
 @media screen and (max-width: 767px) {
   h1 {
     line-height: 100%;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 400;
     margin-block-end: 0px;
     margin-block-start: 0px;
   }
+
+  .loadingScreen__title {
+    font-size: 6rem;
+    color: #afacaa;
+    margin: 0;
+    margin-bottom: 24px;
+    font-family: "InstrumentSerif-Regular", serif;
+    letter-spacing: 5px;
+    font-weight: 400; 
+  }  
   
-  p {
-    font-size: 1.5rem;
+
+  .loadingScreen__paragraph {
+    line-height: 30%;
+    font-size: 1.4rem;
     opacity: 100%;
-    margin-block-end: 0;
+    margin-block-end: 10%;
     margin-block-start: 0;
-    line-height: 1.3;
-  
-  }
-  .box-style {
-    padding: 10vw;
-    width: 100vw;
-    position: 'relative';
-    bottom: 0px;
+    font-family: "InstrumentSerif-Italic", serif;
+
   }
 
-}
-@media screen and (max-width: 479px) {
 
-  h1 {
-    line-height: 100%;
-    font-size: 3rem;
-    font-weight: 400;
-    margin-block-end: 0px;
-    margin-block-start: 0px;
+  .portal-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2cqw; 
   }
   
-  p {
-    font-size: 1.5rem;
-    opacity: 100%;
-    margin-block-end: 0;
-    margin-block-start: 0;
-    line-height: 1.3;
-  
-  }
   .portal-text {
     background-color: rgba(255, 255, 255, 0.30);
     border: 1px solid rgba(255, 255, 255, 0.20);
     backdrop-filter: blur(50%);
     border-radius: 16px;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start; 
+    justify-content: center;
+    align-items: center;
     backdrop-filter: 10px;
-    gap: 2rem; 
-    width: 50vw;
-    position: absolute;
-    left: 16px;
-    top: 16px; 
-    padding-top: 32px;
-    padding-bottom: 32px;
-    padding-left: 24px;
-    padding-right: 24px;
- 
+    position: relative;
+    width: 35vw;
+    left: 4cqw;
+    top: 4cqw; 
+    padding-top: 2cqw;
+    padding-bottom: 2cqw;
+    padding-left: 2cqw;
+    padding-right: 2cqw;
+  
+  }
+  
+  h1 {
+    line-height: 100%;
+    font-size: 4.cqw;
+    font-weight: 400;
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+    display: block;
+  }
+  
+  .poem-text {
+    font-size: 3cqw;
+    opacity: 100%;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    line-height: 1.3;
+    font-family: "InstrumentSerif-Italic", serif;
+    display: block;
   }
 
-.box-style {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start; 
-  position: relative;
-  width: 100%;
-  height: 100svh;
+  .mobile {
+    font-size: 4cqw;
+    opacity: 100%;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    line-height: 100%;
+    font-family: "InstrumentSerif-Italic", serif;
+    display: block;
+    color: #afacaa;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+
 }
-}
+
+@media screen and (max-width: 479px) {
+
+  .loadingScreen__title {
+    font-size: 4rem;
+    color: #afacaa;
+    margin: 0;
+    margin-bottom: 24px;
+    font-family: "InstrumentSerif-Regular", serif;
+    letter-spacing: 5px;
+    font-weight: 400; 
+  }
+
+  .loadingScreen__button {
+    padding: 8px 32px;
+    background-color: #e48ccc;
+    color: white;
+    border: 1px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    border-radius: 60px;
+    transition: background-color 0.4s;
+    font-family: "InstrumentSerif-Regular", serif;
+    letter-spacing: 3px; 
+  }
+
+  .loadingScreen__paragraph {
+    font-size: 1.2rem;
+    opacity: 100%;
+    padding-bottom: 16px;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    line-height: 80%;
+    font-family: "InstrumentSerif-Italic", serif;
+  }
+
+  
+  .portal-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2cqw; 
+  }
+  
+  .portal-text {
+    background-color: rgba(255, 255, 255, 0.30);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(50%);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: 10px;
+    position: relative;
+    width: 35vw;
+    left: 4cqw;
+    top: 4cqw; 
+    padding-top: 2cqw;
+    padding-bottom: 2cqw;
+    padding-left: 2cqw;
+    padding-right: 2cqw;
+  
+  }
+  
+  h1 {
+    line-height: 100%;
+    font-size: 5cqw;
+    font-weight: 400;
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+    display: block;
+  }
+  
+  .poem-text {
+    font-size: 3cqw;
+    opacity: 100%;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    line-height: 1.3;
+    font-family: "InstrumentSerif-Italic", serif;
+    display: block;
+  }
+
+  .mobile {
+    font-size: 4cqw;
+    opacity: 100%;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    line-height: 100%;
+    font-family: "InstrumentSerif-Italic", serif;
+    display: block;
+    color: #afacaa;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+
+  }

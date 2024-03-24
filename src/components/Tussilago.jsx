@@ -1,13 +1,11 @@
-import { useGLTF, useTexture } from '@react-three/drei'
+import { useGLTF, useTexture } from '@react-three/drei';
 
 
 export function Tussilago(props) {
   const { nodes, materials } = useGLTF('/models/tussilago.glb')
   const texture = useTexture('/textures/tussilago2.jpg')
 
-
-  // Flip the texture vertically
-  texture.flipY = false; 
+  texture.flipY = false
   
     materials.tussilaco_stem.map = texture
     materials.tussilago_petals.map = texture
