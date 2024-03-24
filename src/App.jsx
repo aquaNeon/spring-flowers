@@ -6,7 +6,7 @@ import { LoadingScreen } from "./components/LoadingScreen.jsx";
 
 function App() {
   const [start, setStart] = useState(false)
-  const ambience = new Audio('/audio/ambience.mp3')
+  const ambience = new Audio('/audio/ambiance.mp3')
   ambience.volume = 0.5
 
   useEffect(() => {

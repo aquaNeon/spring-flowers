@@ -18,6 +18,9 @@ export const LoadingScreen = ({ started, onStarted }) => {
           <p>Double-click to see</p>
           <p>Worlds unfold in poetry</p>
           <p>Haiku's silent voice</p>
+          <p className="mobile">[Mobile - use landscape & double tap ]</p>
+        </div>
+        <div>
         </div>
         <button
           className="loadingScreen__button"
@@ -26,9 +29,6 @@ export const LoadingScreen = ({ started, onStarted }) => {
         >
           Spring is here
         </button>
-          <div>
-            <p className="mobile">[ Best on desktop, use landscape and double tap on mobile  ]</p>
-          </div>
       </div>
     </div>
   );

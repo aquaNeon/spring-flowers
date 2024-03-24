@@ -215,7 +215,6 @@ const FlowerStage = ({children, texture, name, color, paragraph, active, setActi
     }
 
     //hover sounds 
-
     const handlePointerEnter = () => {
         if (!active) {
         hoverSound.currentTime = 0
